@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM</title>
+	</head>
+	<body>
+	<ul id="ul1">
+		<li class="box"></li>
+		<li class="box"></li>
+		<li></li>
+		<li class="box"></li>
+		<li></li>
+	</ul>
+		<script>
+		var oUl=document.getElementById('ul1');
+		var aLi=oUl.getElementsByTagName('li');
+		for(var i=0;i<aLi.length;i++)
+		{
+			if(aLi[i].className=='box')
+			{
+				aLi[i].style.background='green';
+			}
+		}
+		/*
+		if(oUl.firstElementChild)
+		{oUl.firstElementChild.style.background='red';}
+		else
+		{oUl.firstChild.style.background='red';}
+		*/
+		</script>
+	</body>
+</html>

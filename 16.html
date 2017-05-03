@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文档碎片</title>
+	</head>
+	<body>
+		<ul id="ul1"></ul>
+		<script>
+		    var oUl=document.getElementById('ul1');
+			var oFrag=document.createDocumentFragment();
+			for(var i=0;i<10000;i++)
+			{
+				var oLi=document.createElement('li');
+				oFrag.appendChild(oLi);
+			}
+			oUl.appendChild(oFrag);
+		</script>
+		
+	</body>
+</html>

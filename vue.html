@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue初试</title>
+	</head>
+	<body>		
+		<script src="js/vue.js"></script>
+		<script>
+			window.onload=function()
+			{
+				var oVue=new Vue({
+					el:'#box',
+					data:{msg:'welcome vue!'}
+				});
+			}
+		</script>
+		<div id="box">
+			{{msg}}
+		</div>
+	</body>
+</html>

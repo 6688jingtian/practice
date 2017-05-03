@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM父节点，子节点</title>
+	</head>
+	<body>
+		<ul id="ul1">
+		<li>赵四<a href="#">隐藏</a></li>
+		<li>刘能<a href="#">隐藏</a></li>
+		<li>谢广坤<a href="#">隐藏</a></li>
+		<li>赵玉田<a href="#">隐藏</a></li>
+		<li>王大拿<a href="#">隐藏</a></li>
+		</ul>
+		<script>
+            //alert(oLi.childNodes.length);
+			//nodeType=1元素节点
+			//nodeType=3 文本节点,children指元素节点
+			//alert(oLi.children.length);
+			var oLi=document.getElementById('ul1');
+			var aA=document.getElementsByTagName('a');
+			for(var i=0;i<aA.length;i++)
+			{
+				aA[i].onclick=function()
+				{
+					this.parentNode.style.display='none';
+				}
+			}
+			for(var i=0;i<oLi.childNodes.length;i++)
+			{
+				if(oLi.childNodes[i].nodeType==1)
+				{
+				   oLi.childNodes[i].style.background="chartreuse";
+				}
+			}
+		</script>
+	</body>
+</html>

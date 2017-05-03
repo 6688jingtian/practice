@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>一键偷小说</title>
+	</head>
+	<body>
+		<textarea cols="100" rows="10" border="1" id="text1"></textarea><br>
+		<input type="button" id="btn1" value="开偷" id="btn1"/><br />
+		<textarea cols="100" rows="10" border="1" id="text2"></textarea>
+		<script>
+			var oBtn1=document.getElementById('btn1');
+			var oText1=document.getElementById('text1');
+			var oText2=document.getElementById('text2');
+			oBtn1.onclick=function()
+			{
+				var er=/<[^<>]+>/g;
+				var qq=/[1-9]\d{4,11}/;//qq号
+				var tel=/(0\d{2,3})?[1-9]\d[7](-\d{1,5})?/;//完整电话号码，包括区号和分机号
+				oText2.value=oText1.value.replace(er,'');
+			}
+		</script>
+	</body>
+</html>

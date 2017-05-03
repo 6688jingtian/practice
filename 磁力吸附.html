@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>磁力吸附</title>
+		<style>
+			*{margin: 0;padding: 0;}
+			#div1{height: 100px; width: 100px; position: absolute; background: greenyellow;}
+			#div2{height: 600px; width: 600px; position: relative; background: #ccc;}
+		</style>
+	</head>
+	<body>
+		<div id="div2">
+		<div id="div1"></div>
+		</div>
+		<script>
+            var oDisx=0;
+            var oDisy=0;
+			var oDiv1=document.getElementById('div1');
+			var oDiv2=document.getElementById('div2');
+			oDiv1.onmousedown=function(ev)
+			{
+				var oEvent=ev||event;
+				oDisx=oEvent.clientX-oDiv1.offsetLeft;
+				oDisy=oEvent.clientY-oDiv1.offsetTop;
+				document.onmousemove=function(ev)
+			    {
+					var oEvent=ev||event;
+					var l=oEvent.clientX-oDisx;
+					var r=oEvent.clientY-oDisy;
+					if(l<50)
+					{
+						l=0;
+					}
+					if(l>oDiv2.offsetWidth-oDiv1.offsetWidth)
+					{
+						l=oDiv2.offsetWidth-oDiv1.offsetWidth;
+					}
+					if(r<50)
+					{
+						r=0;
+					}
+					if(r>oDiv2.offsetHeight-oDiv1.offsetHeight)
+					{
+						r=oDiv2.offsetHeight-oDiv1.offsetHeight;
+					}
+					oDiv1.style.left=l+'px';
+					oDiv1.style.top=r+'px';
+			    };
+			    document.onmouseup=function(ev)
+			    {
+					document.onmousemove='';
+					document.onmouseup='';
+					if(oDiv1.setCapture)
+					{
+						oDiv1.releaseCapture();//兼容IE7
+					}
+			    };
+			    return false;
+			    if(oDiv1.setCapture)
+			    {
+			       oDiv1.setCapture();//兼容IE7
+			    }
+			};			
+		</script>
+	</body>
+</html>

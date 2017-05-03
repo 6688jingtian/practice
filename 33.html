@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS模拟弹窗—链式运动</title>
+        <style>
+        	#div1{height: 100px; width: 100px;  background: red; filter: alpha(opacity:30); opacity:0.3;}
+        </style>
+    </head>
+    <body>
+        <script src="js/move.js"></script>
+        
+        <div id="div1"></div>
+        <script>
+        	var oDiv1=document.getElementById('div1');
+        	oDiv1.onmouseover=function()
+        	{
+        		move(oDiv1,300,'width',function(){
+        			move(oDiv1,300,'height',function(){
+        				move(oDiv1,100,'opacity');
+        			});
+        		});
+        	};
+        	oDiv1.onmouseout=function()
+        	{
+        		move(oDiv1,30,'opacity',function(){
+        			move(oDiv1,100,'height',function(){
+        				move(oDiv1,100,'width');
+        			});
+        		});
+        	}
+        </script>
+    </body>
+</html>

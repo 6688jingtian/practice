@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>运动</title>
+		<style>
+			#div1{width: 200px; height: 200px; background: green; top: 50px; left: 50px;
+			position:absolute; }
+		</style>
+	</head>
+	<body>
+		<input type="button" value="开始" id="btn1"/>
+		<div id="div1"></div>
+		<script>
+	 	    var oDiv1=document.getElementById('div1');
+			var oBtn1=document.getElementById('btn1');
+			var timer=null;
+			oBtn1.onclick=function()
+			{
+				clearInterval(timer);
+				var speed=1;
+				timer=setInterval(function()
+				{
+					if(oDiv1.offsetLeft>=300)
+					{
+					   clearInterval(timer);
+					}
+					else
+					{
+					oDiv1.style.left=oDiv1.offsetLeft+speed+'px';
+					}
+				},30);	
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件绑定</title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn1"/>
+		<script>
+			var oBtn=document.getElementById('btn1');
+			oBtn.addEventListener('click',function(){alert('a');},false);
+			oBtn.addEventListener('click',function(){alert('b');},false);
+		</script>
+	</body>
+</html>

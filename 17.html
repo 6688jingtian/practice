@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>删除</title>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>刘能<a href="#">删除</a></li>
+			<li>赵四<a href="#">删除</a></li>
+			<li>谢永强<a href="#">删除</a></li>
+			<li>王小蒙<a href="#">删除</a></li>
+			<li>谢大脚<a href="#">删除</a></li>
+		</ul>
+		<script>
+			var oUl=document.getElementById('ul1');
+			var aA=document.getElementsByTagName('a');
+			for(var i=0;i<aA.length;i++)
+			{
+				aA[i].onclick=function()
+				{
+					oUl.removeChild(this.parentNode);
+				}
+				
+			}
+		</script>
+	</body>
+</html>

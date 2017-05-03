@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM添加</title>
+	</head>
+	<body>
+		<input type="text" id="txt1" value=""/>
+		<input type="button" value="添加" id="btn1"/>
+		<ul id="ul1">
+		</ul>
+		<script>
+			var oBtn=document.getElementById('btn1');
+			var oUl=document.getElementById('ul1');
+			var oTxt=document.getElementById('txt1');
+			oBtn.onclick=function()
+			{
+				var oLi=document.createElement('li');
+				var aLi=oUl.getElementsByTagName('li');
+				oLi.innerHTML=oTxt.value; 
+				//父级.appendChild();
+				if(aLi.length>0)
+				{
+				   oUl.insertBefore(oLi,aLi[0]);
+				}
+				else
+				{
+				   oUl.appendChild(oLi);
+				}
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM高级应用(2)</title>
+		<style>
+			#ul1{background: yellow;}
+			#ul2{background: green;}
+		</style>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>15</li>
+			<li>27</li>
+			<li>13</li>
+			<li>49</li>
+			<li>25</li>
+		</ul>
+		<input type="button" value="排序" id="btn1">
+		<ul id="ul2"></ul>
+		<script>
+		    var oBtn=document.getElementById('btn1');
+			var oUl1=document.getElementById('ul1');
+			//var oUl2=document.getElementById('ul2');
+			oBtn.onclick=function()
+			{
+				var aLi=oUl1.getElementsByTagName('li');//元素集合
+				var arr=[];
+				for(var i=0;i<aLi.length;i++)
+				{
+					arr[i]=aLi[i];
+				}
+				arr.sort(function(li1,li2)//sort需要函数的
+				{
+					var n1=parseInt(li1.innerHTML);
+					var n2=parseInt(li2.innerHTML);
+					return n1-n2;
+				});
+				for(var i=0;i<arr.length;i++)
+				{
+					oUl1.appendChild(arr[i]);
+				}
+				//var oLi=oUl1.children[0];
+				//oUl1.removeChild(oLi);
+				//oUl1.appendChild(oLi);
+				//oUl2.appendChild(oLi);
+				//var n1=oUl1.children.remove();
+				//oUl2.appendChild(n1);
+			}
+		</script>
+	</body>
+</html>

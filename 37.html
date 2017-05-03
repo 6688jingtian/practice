@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>(js事件基础)Event事件对象</title>
+	</head>
+	<body>
+		<script>
+			document.onclick=function(ev)
+			{
+				var oEvent=ev||event;//事件对象兼容性写法
+				alert(oEvent.clientX+','+oEvent.clientY);
+			}
+		</script>
+	</body>
+</html>

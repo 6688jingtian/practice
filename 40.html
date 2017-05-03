@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>回车提交功能</title>
+		<style>
+			#div1{height: 100px; width: 200px; border: 1px solid;}
+			#ul1 li{list-style: none;}
+		</style>
+	</head>
+	<body>
+		<input type="text" id="txt1" /><br />
+		<textarea id="text" cols="20" rows="10"></textarea>
+			<ul></ul>
+		</textarea>
+		<script>
+			var oTxt=document.getElementById('txt1');
+			var oText=document.getElementById('text');
+			oTxt.onkeydown=function(ev)
+			{
+				var oEvent=ev||event;
+				if(oEvent.keyCode==13)//&&oEvent.ctrlKey altKey,shirtKey
+				{
+					oText.value+=oTxt.value+'\n';
+					oTxt.value='';
+				}
+			}
+		</script>
+	</body>
+</html>

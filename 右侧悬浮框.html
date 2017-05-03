@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>右侧悬浮框</title>
+		<style>
+			#div1{width: 100px; height: 200px; background: gold; position: absolute; 
+			right: 0px; bottom: 0px;}
+		</style>
+	</head>
+	<body style="height: 3000px;">
+		<div id="div1"></div>
+		<script>
+		var timer=null;
+		var oDiv1=document.getElementById('div1');
+		function move(target)
+		{
+			clearInterval(timer);
+			timer=setInterval(function()
+			{ 
+				var speed=(target-oDiv1.offsetTop)/8;
+			    speed=speed>0?Math.ceil(speed):Math.floor(speed);
+				if(oDiv1.offsetTop==target)
+				{
+					clearInterval(timer);
+				}
+				else
+				{
+					oDiv1.style.top=oDiv1.offsetTop+speed+'px';
+				}
+            })
+		};
+        window.onscroll=window.onresize=function()
+		{
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			move(parseInt((document.documentElement.clientHeight-oDiv1.offsetHeight)/2)+scrollTop);
+		}
+		/*
+		 *  offsetHeight网页内容的实际高度
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			//获取浏览器滚动条滚动的距离，而这种写法是为了兼容ie低版本和其他浏览器
+			oDiv1.style.top=document.documentElement.clientHeight-oDiv1.offsetHeight+scrollTop+
+			'px';
+		*/
+		</script>
+	</body>
+</html>

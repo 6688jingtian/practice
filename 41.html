@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义菜单|默认行为(事件)</title>
+		<style>
+			*{margin: 0;padding: 0;list-style: none;}
+			#div1{height: 90px;background: #ccc;position: absolute;border: 1px black solid;display: none;}
+			body{height: 2000px;}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<ul>
+			<li>菜单</li>
+			<li>开机</li>
+			<li>关机</li>
+			<li>睡眠</li>
+		    </ul>
+		</div>
+		<script>
+			function getPos()
+			{
+				var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+				var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+				return{x:scrollLeft,y:scrollTop};
+			}
+			oDiv=document.getElementById('div1');
+			document.oncontextmenu=function(ev)
+			{
+				var oEvent=ev||event;
+				var pos=getPos(oEvent);
+				oDiv.style.left=pos.x+oEvent.clientX+'px';
+				oDiv.style.top=pos.y+oEvent.clientY+'px';
+				oDiv.style.display='block';
+				return false;//阻止默认事件
+			}
+			document.onclick=function()
+			{
+				oDiv.style.display='none';
+			}
+		</script>
+	</body>
+</html>

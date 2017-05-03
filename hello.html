@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>求和</title>
+	<script>
+		window.onload=function()
+		{
+			var otxt1=document.getElementById("txt1");
+			var otxt2=document.getElementById("txt2");
+			var otxt3=document.getElementById("txt3");
+			var obtn1=document.getElementById("btn1");
+			obtn1.onclick=function()
+			{
+				var n1=parseInt(otxt1.value);
+				var n2=parseInt(otxt2.value)
+				if(isNaN(n1))
+				{
+					alert("您输入的第一个数字有误！");
+				}
+				else
+				if(isNaN(n2))
+				{
+					alert("您输入的第二个数字有误！");
+				}
+				//alert(typeof otxt1);
+				else
+				{
+				otxt3.value=(n1+n2);
+				}
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<input type="text" id="txt1" /></br>
+		<input type="text" id="txt2" /></br>
+		<input type="text" id="txt3" />
+		<input type="button" id="btn1" value="求和" />
+	</body>
+</html>

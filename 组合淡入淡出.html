@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组合淡入淡出</title>
+		<style>
+			div{width: 200px; height: 200px; float: left; background: red; margin: 10px;
+			filter: alpha(opacity:30); opacity:0.3;}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script>
+		    var timer=null;
+			var oDiv=document.getElementsByTagName('div');
+			function move(obj,target)
+			{
+				clearInterval(obj.timer);
+				obj.timer=setInterval(function()
+				{
+				   var speed=(target-obj.alpha)/10;
+				   speed=speed>0?Math.ceil(speed):Math.floor(speed);
+				   if(obj.offset==target)
+				   {
+				   	  clearInterval(obj.timer);
+				   }
+				   else
+				   {
+				   	  obj.alpha+=speed;
+				   	  obj.style.filter='alpha(opacity:'+obj.alpha+')'
+				   	  obj.style.opacity=obj.alpha/100;
+				   }
+				});
+			}
+			for(var i=0;i<oDiv.length;i++)
+			{
+				oDiv[i].alpha=30;
+				oDiv[i].onmouseover=function()
+				{
+					move(this,100);
+				};
+				oDiv[i].onmouseout=function()
+				{
+					move(this,30);
+				};
+			}
+		</script>
+	</body>
+</html>

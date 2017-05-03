@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>运动二(淡入淡出)</title>
+		<style>
+			#div1{width: 200px; height: 200px; background: greenyellow; filter: 
+			alpha(opacity:30); opacity:0.3;}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+		    var alpha=30;
+			var oDiv1=document.getElementById('div1');
+			var timer=null;
+			function move(target)//运动框架
+			{
+				if(target>alpha)
+				{speed=10;}
+				else
+				speed=-10;
+				clearInterval(timer);
+				timer=setInterval(function()
+				{
+					if(alpha==target)
+					{
+					   clearInterval(timer);
+					}
+					else
+					{
+					   alpha+=speed;
+					   oDiv1.style.filter='filter:alpha(opacity:'+alpha+');';  
+					   oDiv1.style.opacity=alpha/100;
+					}	
+				},30);
+			}
+			oDiv1.onmouseover=function()
+			{
+				move(100);
+			}
+			oDiv1.onmouseout=function()
+			{
+				move(30);
+			}
+		</script>
+	</body>
+</html>

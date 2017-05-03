@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>只需输入数字的文本框</title>
+	</head>
+	<body>
+		<input type="text" id="txt1" />
+		<script>
+			document.onkeydown=function(ev)
+			{
+				var oEvent=ev||event;
+				if((oEvent.keyCode!=8)&&(oEvent.keyCode<48||oEvent.keyCode>57)&&
+				((oEvent.keyCode!=37)&&(oEvent.keyCode!=39)))
+				return false;
+			}
+		</script>
+	</body>
+</html>

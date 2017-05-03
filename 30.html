@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>bug</title>
+		<style>
+			#div1{height: 100px; width: 100px;background: red; border: 1px solid;}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+		function getstyle(obj,name)
+		{
+			if(obj.currentStyle)
+			{
+				return obj.currentStyle;
+			}
+			else
+			{
+				return getComputedStyle(obj,false)[name];
+			}
+		}
+			var oDiv1=document.getElementById('div1');
+			setInterval(function(){
+				oDiv1.style.width=parseInt(getstyle(oDiv1,'width'))-1+'px';
+			},30);
+		</script>
+	</body>
+</html>

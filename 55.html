@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js的继承练习部分</title>
+	</head>
+	<body>
+		<script>
+			var arr1=[10,20,30];
+			var arr2=[];
+			for(var i in arr1)
+			{
+				arr2[i]=arr1[i];
+			}
+			arr1.push(40);
+			alert(arr1);
+			alert(arr2);
+			
+			/*
+			function A()
+			{
+				this.abc=12;
+			}
+			A.prototype.show=function()
+			{
+				alert(this.abc);
+			}
+			function B()
+			{
+				A.call(this);//继承
+			}
+			B.prototype.fn=function()
+			{
+				alert('hello!');
+			}
+			for(var i in A.prototype)
+			{
+				B.prototype[i]=A.prototype[i];
+			}
+			var objA=new A();
+			var objB=new B();
+			objA.fn();
+			*/
+		</script>
+	</body>
+</html>

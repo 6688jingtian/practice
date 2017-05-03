@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>缓冲运动</title>
+		<style>
+			#div1{width: 100px; height: 100px; background: blueviolet; position: absolute;
+			left: 0px; top: 50px;}
+			#div2{width: 1px; height: 300px; border: 1px; left: 1000px; background: black;
+			top: 0px; position: absolute;}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="开始" id="btn1" />
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<script>
+			var oBtn1=document.getElementById('btn1');
+			var oDiv1=document.getElementById('div1');
+			function move(target)
+			{
+				var speed=(target-oDiv1.offsetLeft)/10;
+				speed>0?speed=Math.ceil(speed):speed=Math.floor(speed);
+				oDiv1.style.left=oDiv1.offsetLeft+speed+'px';
+			}
+			//Math.ceil();向上取整，原数变大
+			//Math.floor();向下取整，原数变小
+			oBtn1.onclick=function()
+			{
+				setInterval(function()
+				{
+					move(1000);
+				});
+			}
+		</script>
+	</body>
+</html>

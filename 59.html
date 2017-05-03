@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>正则表达式</title>
+</head>
+<body>
+	<script>
+		var str='abcdef';
+		//alert(str.search('a'));//search返回下标（位置）
+		//alert(str.substring(1,3));
+		//alert(str.charAt(3));
+		//var strr='35-58-66-88-16';
+		//alert(strr.split('-'));
+		var str='12 45dfg -4-5 sf89 88';
+		//var re=/a/i;
+		//var strr='Ablec';
+		//alert(strr.search(re));
+		var tmp=/[^a-z- ]+/g;//等价于/[0-9]+/g
+		/*
+		var arr=[];
+		var tmp='';
+		for(var i=0;i<str.length;i++)
+		{
+			if(str.charAt(i)>=0&&str.charAt(i)<=9)
+			{
+				tmp+=str[i];
+			}
+			if(tmp)
+			{
+				arr=tmp;
+			}
+		}
+		*/
+		alert(str.match(tmp));
+	</script>
+</body>
+</html>

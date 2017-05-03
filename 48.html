@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义滚动条(1)</title>
+		<style>
+			*{margin: 0;padding: 0;}
+			#div1{height: 20px; width: 20px; position: absolute; background: greenyellow;}
+			#div2{height: 20px; width: 500px; position: relative;border: 1px black solid; margin: 10px auto;} 
+			#div3{height: 0;width: 0;background: yellow;margin: 30px auto;filter:alpha(opacity:0);opacity: 0;} 
+		</style>
+	</head>
+	<body>
+		<div id="div2">
+		<div id="div1"></div>
+		</div>
+		<div id="div3"></div>
+		<script>
+            var oDisx=0;
+			var oDiv=document.getElementById('div1');
+			var oDiv2=document.getElementById('div2');
+			var oDiv3=document.getElementById('div3');
+			oDiv.onmousedown=function(ev)
+			{
+				var oEvent=ev||event;
+				oDisx=oEvent.clientX-oDiv.offsetLeft;
+				document.onmousemove=function(ev)
+			    {
+					var oEvent=ev||event;
+					var l=oEvent.clientX-oDisx;
+					if(l<0)
+					{
+						l=0;
+					}
+					if(l>oDiv2.offsetWidth-oDiv.offsetWidth)
+					{
+						l=oDiv2.offsetWidth-oDiv.offsetWidth;
+					}
+					var scale=l/(oDiv2.offsetWidth-oDiv.offsetWidth);
+					oDiv.style.left=l+'px';
+					oDiv3.style.width=scale*500+'px';
+					oDiv3.style.height=scale*500+'px';
+					document.title='参数：'+scale;
+					oDiv3.style.opacity=scale;
+					oDiv3.style.filter='alpha(opacity:'+scale+')';
+			    };
+			    document.onmouseup=function(ev)
+			    {
+					document.onmousemove='';
+					document.onmouseup='';
+			    };
+			    return false;
+			};			
+		</script>
+	</body>
+</html>

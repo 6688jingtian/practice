@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie</title>
+	</head>
+	<body>
+		<script>
+			function setCookie(name,value,iDay)
+			{
+				var oDate=new Date();
+				oDate.setDate(oDate.getDate()+iDay);
+				document.cookie=name+'='+value+';expires='+oDate;
+			}
+			function removeCookie(name)
+			{
+				setCookie(name,1,-1);
+			}
+			setCookie('user','jing',3);
+			setCookie('pass','132456',6);
+			removeCookie('user');
+			alert(document.cookie);
+			//var oDate=new Date();
+			//oDate.setDate(oDate.getDate()+2);
+		    //document.cookie='username=jingtian;expires='+oDate;
+		    //alert(document.cookie);
+		    //document.cookie='password=jingtian';//在cookie中等号相当于添加
+		    //alert(oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate());
+		</script>
+	</body>
+</html>

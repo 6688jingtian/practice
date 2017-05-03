@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM高级应用(1)</title>
+	</head>
+	<body>
+               姓名：<input type="text" value="" id="txt1"/>
+               年龄：<input type="text" value="" id="txt2"/>
+              <input type="button" value="增加" id="btn1"/>&nbsp;&nbsp;
+                           名称：<input type="text" value="" id="txt3"/>
+		      <input type="button" value="搜索" id="btn2" />
+		<table border="1px" width="820px" id="tab1">
+			<thead>
+				<td>ID</td>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>操作</td>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Blue</td>
+					<td>57</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>刘能</td>
+					<td>23</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>谢广坤</td>
+					<td>59</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>刘一水</td>
+					<td>31</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>谢大脚</td>
+					<td>29</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+		<script>
+		var OldColor;
+		var oTab1=document.getElementById('tab1');
+		var oBtn1=document.getElementById('btn1');
+		var oBtn2=document.getElementById('btn2');
+		var oTxt1=document.getElementById('txt1');
+		var oTxt2=document.getElementById('txt2');
+		var oTxt3=document.getElementById('txt3');
+		var id=oTab1.tBodies[0].rows.length+1;
+		oBtn1.onclick=function()
+		{
+			var oTr=document.createElement('tr');
+			var oTd=document.createElement('td');
+			oTr.appendChild(oTd);
+			oTd.innerHTML=id++;
+			
+			var oTd=document.createElement('td');
+			oTr.appendChild(oTd);
+			oTd.innerHTML=oTxt1.value;
+			
+			var oTd=document.createElement('td');
+			oTr.appendChild(oTd);
+			oTd.innerHTML=oTxt2.value;
+			
+			var oTd=document.createElement('td');
+			oTr.appendChild(oTd);
+			oTd.innerHTML="<a href='#'>删除</a>";
+			
+			oTd.getElementsByTagName('a')[0].onclick=function()
+	        {
+			oTab1.tBodies[0].removeChild(this.parentNode.parentNode);//this.不要单引号
+		    };
+		    
+		    oTab1.tBodies[0].appendChild(oTr);
+		};
+		//oTab1.tBodies[0].rows[i].getElementsByTagName('a')[0].onclick=function()
+		oBtn2.onclick=function()
+		{
+			for(var i=0;i<oTab1.tBodies[0].rows.length;i++)
+			{
+				var str1=oTab1.tBodies[0].rows[i].cells[1].innerHTML.toLowerCase();
+				var str2=oTxt3.value.toLowerCase();//转换小写
+				var arr=str2.split(' ');
+				oTab1.tBodies[0].rows[i].style.background='';
+				for(var j=0;j<arr.length;j++)
+				{
+					if(str1.search(arr[j])!=-1)//模糊搜索
+					{
+						oTab1.tBodies[0].rows[i].style.background='yellow';
+					}
+				}
+			}
+		};
+		
+		 for(var i=0;i<oTab1.tBodies[0].rows.length;i++)
+		{
+			oTab1.tBodies[0].rows[i].onmouseover=function()
+			{
+				OldColor=this.style.background;
+				this.style.background='green';
+			}
+			oTab1.tBodies[0].rows[i].onmouseout=function()
+			{
+				this.style.background=OldColor;
+			}
+			if(i%2==0)
+			{
+				oTab1.tBodies[0].rows[i].style.background='gray';
+			}
+		}
+		</script>
+	</body>
+</html>

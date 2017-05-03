@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>运动组合</title>
+		<style>
+			#div1{width: 100px; height: 100px; background: blueviolet; position: absolute;
+			left: 500px; top: 50px;}
+			#div2{width: 1px; height: 300px; border: 1px; left: 100px; background: black;
+			top: 0px; position: absolute;}
+			#div3{width: 1px; height: 300px; border: 1px; left: 300px; background: black;
+			top: 0px; position: absolute;}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="100" id="btn1" />
+		<input type="button" value="200" id="btn2" />
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<div id="div3"></div>
+		<script>
+		    var speed=0;
+		    var timer=null;
+			var oBtn1=document.getElementById('btn1');
+			var oBtn2=document.getElementById('btn2');
+			var oDiv1=document.getElementById('div1');
+			function move(target)
+			{
+				clearInterval(timer);
+				timer=setInterval(function()
+				{
+					if(target>oDiv1.offsetLeft)
+				    {
+					speed=10;
+				    }
+				    else
+				    speed=-10;
+					if(Math.abs(target-oDiv1.offsetLeft)<=10)
+					{
+					    clearInterval(timer);
+					    oDiv1.style.left=target+'px';
+					}
+					else
+					{
+						oDiv1.style.left=oDiv1.offsetLeft+speed+'px';
+					}
+				},30);
+			}
+			//Math.ceil();向上取整，原数变大
+			//Math.floor();向下取整，原数变小
+			oBtn1.onclick=function()
+			{
+				move(100);
+			}
+			oBtn2.onclick=function()
+			{
+				move(300);
+			}
+		</script>
+	</body>
+</html>

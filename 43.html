@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>靠谱拖拽</title>
+		<style>
+			*{margin: 0; padding: 0;}
+			#div1{height: 100px; width: 100px; position: absolute; background: greenyellow;}
+		</style>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<script>
+            var oDisx=0;
+            var oDisy=0;
+			var oDiv=document.getElementById('div1');
+			oDiv.onmousedown=function(ev)
+			{
+				var oEvent=ev||event;
+				oDisx=oEvent.clientX-oDiv.offsetLeft;
+				oDisy=oEvent.clientY-oDiv.offsetTop;
+				document.onmousemove=function(ev)
+			    {
+					var oEvent=ev||event;
+					var l=oEvent.clientX-oDisx;
+					var r=oEvent.clientY-oDisy;
+					if(l<0)
+					{
+						l=0;
+					}
+					if(l>document.documentElement.clientWidth-oDiv.offsetWidth)
+					{
+						l=document.documentElement.clientWidth-oDiv.offsetWidth;
+					}
+					if(r<0)
+					{
+						r=0;
+					}
+					if(r>document.documentElement.clientHeight-oDiv.offsetHeight)
+					{
+						r=document.documentElement.clientHeight-oDiv.offsetHeight;
+					}
+					oDiv.style.left=l+'px';
+					oDiv.style.top=r+'px';
+			    };
+			    document.onmouseup=function(ev)
+			    {
+					document.onmousemove='';
+					document.onmouseup='';
+			    };
+			    return false;
+			};			
+		</script>
+	</body>
+</html>

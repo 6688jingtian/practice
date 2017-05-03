@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>异步获取hello.txt页面的内容</title>
+		<script src="ajax.js"></script>
+	</head>
+	<body>
+		<input type="button" value="确定" id="btn1"/>
+		<script>
+				var oBtn1=document.getElementById('btn1');
+				oBtn1.onclick=function()
+				{
+					ajax('hello.txt',function(str){
+						alert(str);
+					},function(){alert("失败")});
+				};
+		</script>
+	</body>
+</html>
